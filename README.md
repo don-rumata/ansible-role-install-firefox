@@ -1,12 +1,10 @@
-Ansible Role: Install Firefox
-=============================
+# Ansible Role: Install Firefox
 
 Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 
-Work on
--------
+## Work on
 
-**Ansible Galaxy style:**
+### Ansible Galaxy style
 
 ```yaml
   platforms:
@@ -44,7 +42,7 @@ Work on
         - 2019 (10 64bit)
 ```
 
-**Table style:**
+### Table style
 
 - :heavy_check_mark: - work, tested, ok.
 - :construction: - TODO. Work in progress.
@@ -91,13 +89,11 @@ Work on
 |32             |:heavy_check_mark:|:construction:|:construction: |:construction:   |:construction:|   |                  |                  |                  |                  |              |                  |                  |
 |64             |:heavy_check_mark:|:construction:|:construction: |:construction:   |:construction:|   |                  |                  |                  |                  |              |                  |                  |
 
-Requirements
-------------
+## Requirements
 
 [min_ansible_version: 2.8](https://docs.ansible.com/ansible/latest/modules/flatpak_module.html)
 
-Role Variables
---------------
+## Role Variables
 
 ```yaml
 #--- Firefox Edition ---#
@@ -145,49 +141,52 @@ firefox_windows_local_download_path: '{{ ansible_env.TMP }}\firefox'
 firefox_linux_local_download_path: '/tmp/firefox'
 ```
 
-Dependencies
-------------
+## Dependencies
 
-**If you want install over Flatpak:**
+### If you want install over Flatpak
 
 Version one:
+
 ```bash
 cd /path/to/you/ansible/roles
 git clone https://github.com/don-rumata/ansible-role-install-flatpak
 ```
+
 Version two:
+
 ```bash
 ansible-galaxy install don_rumata.ansible_role_install_flatpak
 ```
 
-**If you want install over Snap:**
+### If you want install over Snap
 
 Version one:
+
 ```bash
 cd /path/to/you/ansible/roles
 git clone https://github.com/don-rumata/ansible-role-install-snap
 ```
 
 Version two:
+
 ```bash
 ansible-galaxy install don_rumata.ansible_role_install_snap
 ```
 
-**If you want deploy to Windows 7 - download and install "Windows Management Framework 5.1":**
+### If you want deploy to Windows 7
 
-https://www.microsoft.com/en-us/download/details.aspx?id=54616
+Download and install [Windows Management Framework 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616)
 
-HowTo
------
+## HowTo
 
-Quick config WinRM for Windows: https://ru.stackoverflow.com/a/949971/191416
+Quick config WinRM for Windows: <https://ru.stackoverflow.com/a/949971/191416>
 
-Example Playbooks
-----------------
+## Example Playbooks
 
 Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windows) over package manager of you distro:
 
 `install-firefox.yml`:
+
 ```yml
 - name: Install FireFox
   hosts: all
@@ -202,6 +201,7 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
 ```
 
 `install-firefox-over-flatpak-v1.yml`:
+
 ```yml
 - name: Install FireFox
   hosts: all
@@ -217,6 +217,7 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
 ```
 
 `install-firefox-over-snap-v2.yml`:
+
 ```yml
 - name: Install FireFox
   hosts: all
@@ -231,30 +232,26 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
   tasks:
 ```
 
-License
--------
+## License
 
 Apache License, Version 2.0
 
-Author Information
-------------------
+## Author Information
 
 [don Rumata](https://github.com/don-rumata)
 
-TODO
-----
+## TODO
 
 - Add tests.
 
-Thanks
-------
+## Thanks
 
 - [Arkadiy Illarionov](https://github.com/qarkai)
 
-- https://tablesgenerator.com/markdown_tables
+- <https://tablesgenerator.com/markdown_tables>
 
-- https://www.convertcsv.com/csv-to-markdown.htm
+- <https://www.convertcsv.com/csv-to-markdown.htm>
 
-- https://gist.github.com/parmentf/035de27d6ed1dce0b36a
+- <https://gist.github.com/parmentf/035de27d6ed1dce0b36a>
 
-- https://gist.github.com/rxaviers/7360908
+- <https://gist.github.com/rxaviers/7360908>
