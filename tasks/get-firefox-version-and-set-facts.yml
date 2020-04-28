@@ -1,0 +1,156 @@
+---
+- name: Get Firefox available versions from Mozilla
+  block:
+    - local_action:
+        module: uri
+        url: '{{ firefox_versions_url }}'
+        return_content: yes
+      register: firefox_available_versions
+    # TODO
+    # - local_action:
+    #     module: uri
+    #     url: '{{ firefox_available_languages_url }}'
+    #     return_content: yes
+    #   register: firefox_available_languages
+
+- name: Get Firefox exe version
+  when: ansible_os_family == 'Windows'
+  become: yes
+  become_method: runas
+  become_flags: logon_type=new_credentials logon_flags=netcredentials_only
+  block:
+    - win_stat:
+        path: "{{ firefox_win_path_to_exe }}"
+      register: firefox_exe
+    - win_file_version:
+        path: "{{ firefox_win_path_to_exe }}"
+      register: firefox_exe_file_version
+      when: firefox_exe.stat.exists == true
+
+- name: Run module "setup"
+  setup:
+#   register: facts_from_setup
+# - debug:
+#     msg: "{{ facts_from_setup }}"
+
+- name: Set facts about available Firefox versions
+  block:
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_VERSION }}"
+      when: firefox_edition == 'vanilla'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_RELEASED_DEVEL_VERSION }}"
+      when: firefox_edition == 'beta'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_NIGHTLY }}"
+      when: firefox_edition == 'nightly'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_DEVEDITION }}"
+      when: firefox_edition == 'developer'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_ESR }}"
+      when: firefox_edition == 'esr'
+
+- name: Set facts about Firefox arch
+  block:
+    - set_fact:
+        firefox_arch_fact: linux
+      when:
+        - ansible_system == 'Linux'
+        - ansible_architecture == 'i386'
+        - firefox_arch == 32
+    - set_fact:
+        firefox_arch_fact: linux64
+      when:
+        - ansible_system == 'Linux'
+        - ansible_architecture == 'x86_64'
+        - firefox_arch == 64
+    - set_fact:
+        firefox_arch_fact: win
+      when:
+        - ansible_os_family == 'Windows'
+        - ansible_env.PROCESSOR_ARCHITECTURE == 'x86'
+        - firefox_arch == 32
+    - set_fact:
+        firefox_arch_fact: win64
+      when:
+        - ansible_os_family == 'Windows'
+        - ansible_env.PROCESSOR_ARCHITECTURE == 'AMD64'
+        - firefox_arch == 64
+
+- name: Set facts about Firefox installer type 4 Windows
+  when:
+    - ansible_os_family == 'Windows'
+  block:
+    - set_fact:
+        firefox_win_installer_type_fact: exe
+      when:
+        - firefox_win_installer_type == 'exe'
+    - set_fact:
+        firefox_win_installer_type_fact: msi
+      when:
+        - firefox_win_installer_type == 'msi'
+
+# TODO!!! https://ru.stackoverflow.com/q/1115348/191416
+- name: Set facts about Firefox language
+  block:
+    - set_fact:
+        firefox_lang_fact: ru
+      when:
+        - ansible_os_family == 'Windows'
+        - firefox_lang == 'ru'
+    - set_fact:
+        firefox_lang_fact: en-US
+      when:
+        - ansible_os_family == 'Windows'
+        - firefox_lang == 'en-US'
+
+- name: Set facts about installed Firefox 4 Windows
+  when:
+    - ansible_os_family == 'Windows'
+  block:
+    - set_fact:
+        firefox_exe_state_fact: present
+      when: firefox_exe.stat.exists == true
+    - set_fact:
+        firefox_exe_state_fact: absent
+      when: firefox_exe.stat.exists == false
+    - set_fact:
+        firefox_exe_version_fact: "{{ firefox_exe_file_version.win_file_version.product_version }}"
+      when: firefox_exe.stat.exists == true
+    - set_fact:
+        firefox_exe_version_fact: "{{ firefox_exe_file_version.win_file_version.product_version }}"
+      when: firefox_exe.stat.exists == true
+    - set_fact:
+        firefox_exe_version_fact: 0
+      when: firefox_exe.stat.exists == false
+
+- name: Set fact about Firefox output file after download
+  when:
+    - ansible_os_family == 'Windows'
+  block:
+    - set_fact:
+        firefox_installer_file: firefox-installer-{{ firefox_edition }}-{{ firefox_available_version_fact }}-{{ firefox_arch_fact }}-{{ firefox_lang_fact }}.{{ firefox_win_installer_type }}
+
+########################################################
+
+- name: Build Firefox download string 4 Windows
+  when:
+    - ansible_os_family == 'Windows'
+    - firefox_edition == 'vanilla'
+  block:
+    - set_fact:
+        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}
+        firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_checksum_algorithm | upper }}SUMS
+
+    # - local_action:
+    #     module: uri
+    #     url: "{{ firefox_checksums_array_url_fact }}"
+    #     return_content: yes
+    #   register: firefox_checksums_array
+    # - debug:
+    #     # https://gist.github.com/VerosK/9853931
+    #     msg: "{{ firefox_checksums_array.content.split('\n') }}"
+    #   register: firefox_checksums_array
+    # - debug:
+    #     msg: "{{ firefox_checksums_array | select('match', '+exe') }}"

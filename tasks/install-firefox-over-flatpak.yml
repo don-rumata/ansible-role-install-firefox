@@ -1,0 +1,10 @@
+---
+- name: Install Firefox 4 any Linux over Flatpak
+  flatpak:
+    name: https://flathub.org/repo/appstream/org.mozilla.firefox.flatpakref
+    state: present
+  tags:
+    - linux
+    - firefox
+    - flatpak
+    - install

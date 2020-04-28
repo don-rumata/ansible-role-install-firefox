@@ -1,0 +1,52 @@
+galaxy_info:
+  author: don Rumata
+  description: Install Firefox for Linux and Windows
+  company: localhost
+
+  license: Apache License, Version 2.0
+
+  min_ansible_version: 2.8
+
+  platforms:
+    - name: Fedora
+      versions:
+        - 31
+        - 30
+    - name: Ubuntu
+      versions:
+        - eoan
+        - disco
+        - cosmic
+        - bionic
+        - xenial
+        - trusty
+    - name: Debian
+      version:
+        - jessie
+        - stretch
+        - buster
+        - stable
+        - testing
+    # https://github.com/ansible/galaxy/issues/2072
+    - name: EL
+      versions:
+        - 8
+        - 7
+    - name: opensuse
+      vesrion:
+        - tumbleweed
+    - name: windows
+      version:
+        - 2008x64
+        - 2008x86
+
+  galaxy_tags:
+    - linux
+    - firefox
+    - desktop
+    - windows
+    - windows-7
+    - windows-10
+
+  dependencies: []
+ 

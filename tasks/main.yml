@@ -1,0 +1,42 @@
+---
+- name: Get Firefox versions
+  import_tasks: get-firefox-version-and-set-facts.yml
+  tags:
+    - firefox
+    - get
+    - versions
+
+- name: Download Firefox
+  import_tasks: download-firefox.yml
+  tags:
+    - firefox
+    - download
+
+- name: Install Firefox 4 Windows
+  become: yes
+  become_method: runas
+  become_flags: logon_type=new_credentials logon_flags=netcredentials_only
+  when:
+    - ansible_os_family == 'Windows'
+  import_tasks: install-firefox-4-windows.yml
+  tags:
+    - firefox
+    - install
+    - windows
+    - exe
+    - msi
+
+- name: Install Firefox 4 Linux
+  become: yes
+  when:
+    - ansible_system == 'Linux'
+  import_tasks: install-firefox-over-{{ firefox_method_install }}.yml
+  tags:
+    - firefox
+    - install
+    - linux
+    - deb
+    - rpm
+    - tar
+    - snap
+    - flatpak

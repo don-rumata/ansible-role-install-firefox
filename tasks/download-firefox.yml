@@ -1,0 +1,18 @@
+---
+- name: Download Firefox 4 Windows
+  when:
+    - ansible_os_family == 'Windows'
+    - firefox_edition == 'vanilla'
+    - firefox_exe_version_fact != firefox_available_version_fact
+  become: yes
+  become_method: runas
+  become_flags: logon_type=new_credentials logon_flags=netcredentials_only
+  block:
+    - win_file:
+        path: "{{ firefox_windows_local_download_path }}"
+        state: directory
+    - win_get_url:
+        url: '{{ firefox_direct_download_url }}'
+        dest: '{{ firefox_windows_local_download_path }}\{{ firefox_installer_file }}'
+        # checksum: TODO
+        # checksum_algorithm: TODO

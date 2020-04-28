@@ -1,0 +1,26 @@
+---
+# WORK
+- name: Install Firefox 4 Windows
+  when:
+    - ansible_os_family == 'Windows'
+    - firefox_edition == 'vanilla'
+  become: yes
+  become_method: runas
+  become_flags: logon_type=new_credentials logon_flags=netcredentials_only
+  block:
+    - win_path:
+        elements:
+          - "{{ firefox_win_install_path }}"
+        state: present
+    - win_package:
+        path: '{{ firefox_windows_local_download_path }}\{{ firefox_installer_file }}'
+        creates_path: '{{ firefox_win_path_to_exe }}'
+        creates_version: '{{ firefox_available_version_fact }}'
+        arguments:
+          - -ms
+      when: firefox_win_installer_type_fact == 'exe'
+    - win_package:
+        path: '{{ firefox_windows_local_download_path }}\{{ firefox_installer_file }}'
+        state: present
+        wait: true
+      when: firefox_win_installer_type_fact == 'msi'

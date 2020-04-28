@@ -1,0 +1,87 @@
+---
+# https://repology.org/project/firefox/versions
+
+- name: Install Firefox 4 Debian\Ubuntu
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+  become: yes
+  block:
+    - apt:
+        name:
+          - firefox
+          # Ставим пакет firefox-locale-ru методом парсинга стандартной переменной $LANG. На bash было бы как-то так: echo "$LANG" | cut -d '.' -f 1 | cut -d '_' -f 1 .
+          # https://ru.stackoverflow.com/a/903718
+          - 'firefox-locale-{{ ansible_env.LANG.split(".")[0].split("_")[0] }}'
+        state: latest
+        install_recommends: yes
+  tags:
+    - linux
+    - ubuntu
+    - mozilla
+    - firefox
+    - browser
+    - ff
+
+- name: Install Firefox 4 CentOS\RHEL
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'yum'
+  vars:
+    # https://stackoverflow.com/a/47091066/5430535
+    # https://github.com/ansible/ansible/issues/32532#issuecomment-341641007
+    ansible_python_interpreter: /usr/bin/python2.7
+  become: yes
+  block:
+    - yum:
+        name:
+          - firefox
+        state: latest
+  tags:
+    - linux
+    - firefox
+    - install
+    - rhel
+    - centos
+    - yum
+    - rpm
+
+- name: Install Firefox 4 Fedora
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'dnf'
+  become: yes
+  block:
+    - dnf:
+        name:
+          - firefox
+        state: latest
+  tags:
+    - linux
+    - firefox
+    - install
+    - rhel
+    - fedora
+    - dnf
+    - rpm
+
+
+- name: Install Firefox 4 OpenSUSE
+  when:
+    - ansible_os_family == 'Suse'
+    - ansible_pkg_mgr == 'zypper'
+  become: yes
+  block:
+    - zypper:
+        name:
+          - MozillaFirefox
+          - MozillaFirefox-translations-other
+        state: latest
+  tags:
+    - linux
+    - suse
+    - opensuse
+    - mozilla
+    - firefox
+    - browser
+    - ff

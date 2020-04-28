@@ -1,0 +1,11 @@
+---
+- name: Install Firefox 4 any Linux over Snapd
+  snap:
+    name: firefox
+    state: present
+  tags:
+    - linux
+    - firefox
+    - snap
+    - snapd
+    - install
