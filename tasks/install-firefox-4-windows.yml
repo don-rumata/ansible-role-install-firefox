@@ -4,6 +4,7 @@
   when:
     - ansible_os_family == 'Windows'
     - firefox_edition == 'stable'
+    - firefox_exe_version_fact != firefox_available_version_fact
   become: yes
   become_method: runas
   become_flags: logon_type=new_credentials logon_flags=netcredentials_only

@@ -113,8 +113,9 @@ firefox_method_install: package-manager
 
 #--- Firefox language ---#
 
-# !!! Default value 4 Windows !!!:
-firefox_lang: ru
+# Default value: firefox_lang == your_windows_system_language
+
+# firefox_lang: ru
 # firefox_lang: en-US
 
 #--- Firefox api urls ---#
@@ -183,7 +184,7 @@ Quick config WinRM for Windows: <https://ru.stackoverflow.com/a/949971/191416>
 
 ## Example Playbooks
 
-Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windows) over package manager of you distro:
+Install latest stable Firefox on Windows or Linux over package manager of you distro:
 
 `install-firefox.yml`:
 
@@ -195,8 +196,6 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
     - "100%"
   roles:
     - ansible-role-install-firefox
-  vars:
-    firefox_lang: en-US
   tasks:
 ```
 
@@ -247,6 +246,8 @@ Apache License, Version 2.0
 ## Thanks
 
 - [Arkadiy Illarionov](https://github.com/qarkai)
+
+- [RedMadness](https://github.com/RedMadness)
 
 - <https://tablesgenerator.com/markdown_tables>
 

@@ -1,17 +1,27 @@
 ---
 - name: Get Firefox available versions from Mozilla
-  block:
-    - local_action:
-        module: uri
-        url: '{{ firefox_versions_url }}'
-        return_content: yes
-      register: firefox_available_versions
-    # TODO
-    # - local_action:
-    #     module: uri
-    #     url: '{{ firefox_available_languages_url }}'
-    #     return_content: yes
-    #   register: firefox_available_languages
+  local_action:
+    module: uri
+    url: '{{ firefox_versions_url }}'
+    return_content: yes
+  register: firefox_available_versions
+
+
+
+- name: Get system language
+  when: ansible_os_family == 'Windows'
+  become: yes
+  become_method: runas
+  become_flags: logon_type=new_credentials logon_flags=netcredentials_only
+  script: get-system-language.ps1
+  register: firefox_lang_for_windows_from_json
+  changed_when: firefox_lang_for_windows_from_json.rc != 0
+# https://stackoverflow.com/a/46979534/5430535
+- debug:
+    msg: "{{ firefox_lang_for_windows_from_json.stdout | trim }}"
+  register: firefox_lang_for_windows_from_json
+
+
 
 - name: Get Firefox exe version
   when: ansible_os_family == 'Windows'
@@ -27,11 +37,15 @@
       register: firefox_exe_file_version
       when: firefox_exe.stat.exists == true
 
+
+
 - name: Run module "setup"
   setup:
 #   register: facts_from_setup
 # - debug:
 #     msg: "{{ facts_from_setup }}"
+
+
 
 - name: Set facts about available Firefox versions
   block:
@@ -50,6 +64,8 @@
     - set_fact:
         firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_ESR }}"
       when: firefox_edition == 'esr'
+
+
 
 - name: Set facts about Firefox arch
   block:
@@ -78,6 +94,8 @@
         - ansible_env.PROCESSOR_ARCHITECTURE == 'AMD64'
         - firefox_arch == 64
 
+
+
 - name: Set facts about Firefox installer type 4 Windows
   when:
     - ansible_os_family == 'Windows'
@@ -91,19 +109,24 @@
       when:
         - firefox_win_installer_type == 'msi'
 
-# TODO!!! https://ru.stackoverflow.com/q/1115348/191416
+
+
+# https://ru.stackoverflow.com/q/1115348/191416
 - name: Set facts about Firefox language
+  when: ansible_os_family == 'Windows'
   block:
     - set_fact:
-        firefox_lang_fact: ru
-      when:
-        - ansible_os_family == 'Windows'
-        - firefox_lang == 'ru'
+        firefox_lang_fact_tmp: "{{ firefox_lang_for_windows_from_json.msg }}"
     - set_fact:
-        firefox_lang_fact: en-US
+        firefox_lang_fact: "{{ firefox_lang_for_windows_from_json.msg }}"
       when:
-        - ansible_os_family == 'Windows'
-        - firefox_lang == 'en-US'
+        - firefox_lang == firefox_lang_fact_tmp
+    - set_fact:
+        firefox_lang_fact: "{{ firefox_lang }}"
+      when:
+        - firefox_lang != firefox_lang_fact_tmp
+
+
 
 - name: Set facts about installed Firefox 4 Windows
   when:
@@ -117,13 +140,12 @@
       when: firefox_exe.stat.exists == false
     - set_fact:
         firefox_exe_version_fact: "{{ firefox_exe_file_version.win_file_version.product_version }}"
-      when: firefox_exe.stat.exists == true
-    - set_fact:
-        firefox_exe_version_fact: "{{ firefox_exe_file_version.win_file_version.product_version }}"
-      when: firefox_exe.stat.exists == true
+      when: firefox_exe_state_fact == 'present'
     - set_fact:
         firefox_exe_version_fact: 0
-      when: firefox_exe.stat.exists == false
+      when: firefox_exe_state_fact == 'absent'
+
+
 
 - name: Set fact about Firefox output file after download
   when:
@@ -132,7 +154,7 @@
     - set_fact:
         firefox_installer_file: firefox-installer-{{ firefox_edition }}-{{ firefox_available_version_fact }}-{{ firefox_arch_fact }}-{{ firefox_lang_fact }}.{{ firefox_win_installer_type }}
 
-########################################################
+
 
 - name: Build Firefox download string 4 Windows
   when:
@@ -142,6 +164,10 @@
     - set_fact:
         firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}
         firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_checksum_algorithm | upper }}SUMS
+
+
+
+###--- DRAFT ---###
 
     # - local_action:
     #     module: uri

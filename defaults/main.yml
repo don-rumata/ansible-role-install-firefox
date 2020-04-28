@@ -40,9 +40,9 @@ firefox_arch: 64
 
 #--- Firefox language ---#
 
-firefox_lang: ru
+# Default value: firefox_lang == your_windows_system_language
 
-# # https://product-details.mozilla.org/1.0/languages.json
+# firefox_lang: ru
 # firefox_lang: en-US
 
 #--- Firefox setup location ---#
