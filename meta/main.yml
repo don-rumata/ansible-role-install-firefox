@@ -14,6 +14,7 @@ galaxy_info:
         - 30
     - name: Ubuntu
       versions:
+        - focal
         - eoan
         - disco
         - cosmic
