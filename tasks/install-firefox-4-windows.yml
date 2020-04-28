@@ -3,7 +3,7 @@
 - name: Install Firefox 4 Windows
   when:
     - ansible_os_family == 'Windows'
-    - firefox_edition == 'vanilla'
+    - firefox_edition == 'stable'
   become: yes
   become_method: runas
   become_flags: logon_type=new_credentials logon_flags=netcredentials_only

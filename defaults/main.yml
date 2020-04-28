@@ -1,7 +1,7 @@
 ---
 #--- Firefox Edition ---#
 
-firefox_edition: vanilla
+firefox_edition: stable
 
 # https://www.mozilla.org/en-US/firefox/channel/desktop/#beta
 # firefox_edition: beta

@@ -37,7 +37,7 @@
   block:
     - set_fact:
         firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_VERSION }}"
-      when: firefox_edition == 'vanilla'
+      when: firefox_edition == 'stable'
     - set_fact:
         firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_RELEASED_DEVEL_VERSION }}"
       when: firefox_edition == 'beta'
@@ -137,7 +137,7 @@
 - name: Build Firefox download string 4 Windows
   when:
     - ansible_os_family == 'Windows'
-    - firefox_edition == 'vanilla'
+    - firefox_edition == 'stable'
   block:
     - set_fact:
         firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}

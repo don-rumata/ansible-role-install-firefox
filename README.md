@@ -50,7 +50,7 @@ Work on
 - :construction: - TODO. Work in progress.
 - :x: - not work. Don't try.
 
-|.              |Firefox vanilla   |Firefox beta  |Firefox nightly|Firefox developer|Firefox esr   |.  |Flatpak           |Snap              |msi               |exe               |tar           |32 bit            |64 bit            |
+|.              |Firefox stable   |Firefox beta  |Firefox nightly|Firefox developer|Firefox esr   |.  |Flatpak           |Snap              |msi               |exe               |tar           |32 bit            |64 bit            |
 |---------------|------------------|--------------|---------------|-----------------|--------------|---|------------------|------------------|------------------|------------------|--------------|------------------|------------------|
 |OS             |                  |              |               |                 |              |   |                  |                  |                  |                  |              |                  |                  |
 |Windows        |                  |              |               |                 |              |   |                  |                  |                  |                  |              |                  |                  |
@@ -102,7 +102,7 @@ Role Variables
 ```yaml
 #--- Firefox Edition ---#
 
-firefox_edition: vanilla
+firefox_edition: stable
 # firefox_edition: beta
 # firefox_edition: nightly
 # firefox_edition: developer
