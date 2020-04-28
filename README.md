@@ -187,7 +187,7 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
 
 `install-firefox.yml`:
 
-```yml
+```yaml
 - name: Install FireFox
   hosts: all
   strategy: free
@@ -202,7 +202,7 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
 
 `install-firefox-over-flatpak-v1.yml`:
 
-```yml
+```yaml
 - name: Install FireFox
   hosts: all
   strategy: free
@@ -218,7 +218,7 @@ Install latest stable Firefox on Windows or Linux with `en-US` locale (for Windo
 
 `install-firefox-over-snap-v2.yml`:
 
-```yml
+```yaml
 - name: Install FireFox
   hosts: all
   strategy: free
