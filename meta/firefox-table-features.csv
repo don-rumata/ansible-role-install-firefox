@@ -28,7 +28,7 @@ opensuse,,,,,,,,,,,,,,
 tumbleweed,:heavy_check_mark:,:construction:,:construction:,:construction:,:construction:,,:heavy_check_mark:,:heavy_check_mark:,:x:,:x:,:construction:,,:heavy_check_mark:,:heavy_check_mark:
 .,,,,,,,,,,,,,,
 ArchLinux,,,,,,,,,,,,,,
-any,:heavy_check_mark:,,,,,,:heavy_check_mark:,:construction:,:x:,:x:,:construction:,,:x:,:heavy_check_mark:
+any,:heavy_check_mark:,:construction:,:construction:,:construction:,:construction:,,:heavy_check_mark:,:construction:,:x:,:x:,:construction:,,:x:,:heavy_check_mark:
 .,,,,,,,,,,,,,,
 Package manager,,,,,,,,,,,,,,
 Flatpak,:heavy_check_mark:,:x:,:x:,:x:,:x:,,,,,,,,,
