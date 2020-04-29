@@ -35,6 +35,9 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
     - name: opensuse
       vesrion:
         - tumbleweed
+    - name: ArchLinux
+      version:
+        - any
     - name: windows
       version:
         - 2008x64 (7 64bit)
@@ -77,6 +80,9 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 |.              |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |opensuse       |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |tumbleweed     |:heavy_check_mark:|:construction:    |:construction: |:construction:   |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
+|ArchLinux      |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
+|any            |:heavy_check_mark:|                  |               |                 |                  |   |:heavy_check_mark:|:construction:    |:x:               |:x:               |:construction:|   |:x:               |:heavy_check_mark:|
 |.              |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |Package manager|                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |Flatpak        |:heavy_check_mark:|:x:               |:x:            |:x:              |:x:               |   |                  |                  |                  |                  |              |   |                  |                  |
@@ -242,6 +248,8 @@ Apache License, Version 2.0
 ## TODO
 
 - Add tests.
+
+- Add ArchLinux firefox-i18n-{{ system_lang }}
 
 ## Thanks
 

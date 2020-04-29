@@ -20,6 +20,7 @@
 - debug:
     msg: "{{ firefox_lang_for_windows_from_json.stdout | trim }}"
   register: firefox_lang_for_windows_from_json
+  when: ansible_os_family == 'Windows'
 
 
 

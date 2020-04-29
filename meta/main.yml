@@ -36,6 +36,9 @@ galaxy_info:
     - name: opensuse
       vesrion:
         - tumbleweed
+    - name: ArchLinux
+      version:
+        - any
     - name: windows
       version:
         - 2008x64

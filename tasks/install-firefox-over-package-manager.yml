@@ -85,3 +85,22 @@
     - firefox
     - browser
     - ff
+
+- name: Install Firefox 4 Archlinux
+  when:
+    - ansible_os_family == 'Archlinux'
+    - ansible_pkg_mgr == 'pacman'
+  become: yes
+  block:
+    - pacman:
+        name:
+          - firefox
+          # TODO. notWORK. env почему-то не цепляется ну вот никак.
+          # - firefox-i18n-{{ ansible_env.LANG.split(".")[0].split("_")[0] }}'
+        state: latest
+  tags:
+    - linux
+    - firefox
+    - install
+    - archlinux
+    - pacman
