@@ -65,14 +65,6 @@ firefox_win_installer_type: exe
 
 # firefox_win_installer_type: msi
 
-#--- Firefox install path. Windows only!!! ---#
-
-firefox_win_install_path: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
-
-#--- Firefox path to firefox.exe. Windows only!!! ---#
-
-firefox_win_path_to_exe: '{{ firefox_win_install_path }}\firefox.exe'
-
 #--- Firefox local download path. ---#
 
 firefox_windows_local_download_path: '{{ ansible_env.TMP }}\firefox'

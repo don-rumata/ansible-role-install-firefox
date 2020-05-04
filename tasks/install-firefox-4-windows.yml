@@ -3,7 +3,6 @@
 - name: Install Firefox 4 Windows
   when:
     - ansible_os_family == 'Windows'
-    - firefox_edition == 'stable' or firefox_edition == 'beta' or firefox_edition == 'esr'
     - firefox_exe_version_fact != firefox_available_version_fact
   become: yes
   become_method: runas
@@ -11,11 +10,11 @@
   block:
     - win_path:
         elements:
-          - "{{ firefox_win_install_path }}"
+          - "{{ firefox_win_install_path_fact }}"
         state: present
     - win_package:
         path: '{{ firefox_windows_local_download_path }}\{{ firefox_installer_file }}'
-        creates_path: '{{ firefox_win_path_to_exe }}'
+        creates_path: '{{ firefox_win_path_to_exe_fact }}'
         creates_version: '{{ firefox_available_version_fact }}'
         arguments:
           - -ms

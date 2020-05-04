@@ -24,6 +24,33 @@
 
 
 
+- name: Set facts about available Firefox versions and win paths.
+  block:
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_VERSION }}"
+        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
+      when: firefox_edition == 'stable'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_RELEASED_DEVEL_VERSION }}"
+        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
+      when: firefox_edition == 'beta'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_NIGHTLY }}"
+        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Firefox Nightly'
+      when: firefox_edition == 'nightly'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_DEVEDITION }}"
+        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Firefox Developer Edition'
+      when: firefox_edition == 'developer'
+    - set_fact:
+        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_ESR }}"
+        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
+      when: firefox_edition == 'esr'
+    - set_fact:
+        firefox_win_path_to_exe_fact: '{{ firefox_win_install_path_fact }}\firefox.exe'
+
+
+
 - name: Get Firefox exe version
   when: ansible_os_family == 'Windows'
   become: yes
@@ -31,10 +58,10 @@
   become_flags: logon_type=new_credentials logon_flags=netcredentials_only
   block:
     - win_stat:
-        path: "{{ firefox_win_path_to_exe }}"
+        path: "{{ firefox_win_path_to_exe_fact }}"
       register: firefox_exe
     - win_file_version:
-        path: "{{ firefox_win_path_to_exe }}"
+        path: "{{ firefox_win_path_to_exe_fact }}"
       register: firefox_exe_file_version
       when: firefox_exe.stat.exists == true
 
@@ -45,26 +72,6 @@
 #   register: facts_from_setup
 # - debug:
 #     msg: "{{ facts_from_setup }}"
-
-
-
-- name: Set facts about available Firefox versions
-  block:
-    - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_VERSION }}"
-      when: firefox_edition == 'stable'
-    - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_RELEASED_DEVEL_VERSION }}"
-      when: firefox_edition == 'beta'
-    - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_NIGHTLY }}"
-      when: firefox_edition == 'nightly'
-    - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_DEVEDITION }}"
-      when: firefox_edition == 'developer'
-    - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_ESR }}"
-      when: firefox_edition == 'esr'
 
 
 
@@ -167,8 +174,8 @@
       when: firefox_edition == 'stable' or firefox_edition == 'beta' or firefox_edition == 'esr'
 
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.{{ firefox_lang_fact }}.{{ firefox_arch_fact }}.installer.{{ firefox_win_installer_type }}
-        firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.{{ firefox_lang_fact }}.{{ firefox_arch_fact }}.checksums
+        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.{{ firefox_arch_fact }}.installer.{{ firefox_win_installer_type }}
+        firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.{{ firefox_arch_fact }}.checksums
       when: firefox_edition == 'nightly'
 
     - set_fact:
