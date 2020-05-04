@@ -10,6 +10,7 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
   platforms:
     - name: Fedora
       versions:
+        - 32
         - 31
         - 30
     - name: Ubuntu
