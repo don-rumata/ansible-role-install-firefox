@@ -2,7 +2,7 @@
 - name: Download Firefox 4 Windows
   when:
     - ansible_os_family == 'Windows'
-    - firefox_edition == 'stable'
+    - firefox_edition == 'stable' or firefox_edition == 'beta' or firefox_edition == 'esr'
     - firefox_exe_version_fact != firefox_available_version_fact
   become: yes
   become_method: runas

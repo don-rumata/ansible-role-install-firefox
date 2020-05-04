@@ -1,8 +1,8 @@
 .,Firefox stable,Firefox beta,Firefox nightly,Firefox developer,Firefox esr,.,Flatpak,Snap,msi,exe,tar,.,32 bit,64 bit
 OS,,,,,,,,,,,,,,
 Windows,,,,,,,,,,,,,,
-7,:heavy_check_mark:,:construction:,:construction:,:construction:,:construction:,,:x:,:x:,:heavy_check_mark:,:heavy_check_mark:,:x:,,:heavy_check_mark:,:heavy_check_mark:
-10,:heavy_check_mark:,:construction:,:construction:,:construction:,:construction:,,:x:,:x:,:heavy_check_mark:,:heavy_check_mark:,:x:,,:heavy_check_mark:,:heavy_check_mark:
+7,:heavy_check_mark:,:heavy_check_mark:,:construction:,:construction:,:heavy_check_mark:,,:x:,:x:,:heavy_check_mark:,:heavy_check_mark:,:x:,,:heavy_check_mark:,:heavy_check_mark:
+10,:heavy_check_mark:,:heavy_check_mark:,:construction:,:construction:,:heavy_check_mark:,,:x:,:x:,:heavy_check_mark:,:heavy_check_mark:,:x:,,:heavy_check_mark:,:heavy_check_mark:
 .,,,,,,,,,,,,,,
 Ubuntu,,,,,,,,,,,,,,
 focal,:heavy_check_mark:,:construction:,:construction:,:construction:,:construction:,,:heavy_check_mark:,:heavy_check_mark:,:x:,:x:,:construction:,,:heavy_check_mark:,:heavy_check_mark:

@@ -55,8 +55,8 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 |---------------|------------------|------------------|---------------|-----------------|------------------|---|------------------|------------------|------------------|------------------|--------------|---|------------------|------------------|
 |OS             |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |Windows        |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|7              |:heavy_check_mark:|:construction:    |:construction: |:construction:   |:construction:    |   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:           |   |:heavy_check_mark:|:heavy_check_mark:|
-|10             |:heavy_check_mark:|:construction:    |:construction: |:construction:   |:construction:    |   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:           |   |:heavy_check_mark:|:heavy_check_mark:|
+|7              |:heavy_check_mark:|:heavy_check_mark:|:construction: |:construction:   |:heavy_check_mark:|   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:           |   |:heavy_check_mark:|:heavy_check_mark:|
+|10             |:heavy_check_mark:|:heavy_check_mark:|:construction: |:construction:   |:heavy_check_mark:|   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:           |   |:heavy_check_mark:|:heavy_check_mark:|
 |.              |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |Ubuntu         |                  |                  |               |                 |                  |   |                  |                  |                  |                  |              |   |                  |                  |
 |focal          |:heavy_check_mark:|:construction:    |:construction: |:construction:   |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
@@ -120,9 +120,6 @@ firefox_method_install: package-manager
 #--- Firefox language ---#
 
 # Default value: firefox_lang == your_windows_system_language
-
-# firefox_lang: ru
-# firefox_lang: en-US
 
 #--- Firefox api urls ---#
 
@@ -250,6 +247,8 @@ Apache License, Version 2.0
 - Add tests.
 
 - Add ArchLinux firefox-i18n-{{ system_lang }}
+
+- Add custom languages.
 
 ## Thanks
 
