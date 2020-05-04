@@ -45,12 +45,18 @@ galaxy_info:
         - 2008x86
 
   galaxy_tags:
-    - linux
     - firefox
+    - mozilla
     - desktop
+    - linux
+    - ubuntu
+    - debian
+    - fedora
+    - centos
+    - opensuse
+    - archlinux
     - windows
-    - windows-7
-    - windows-10
+    - windows7
+    - windows10
 
   dependencies: []
- 
