@@ -137,7 +137,13 @@ firefox_win_installer_type: exe
 #--- Firefox local download path. ---#
 
 firefox_windows_local_download_path: '{{ ansible_env.TMP }}\firefox'
-firefox_linux_local_download_path: '/tmp/firefox'
+firefox_linux_local_download_path: '/var/cache/firefox'
+
+#--- Firefox install paths. Only for tar.bz2 ---#
+
+firefox_linux_install_path: '/opt/firefox/{{ firefox_edition }}'
+firefox_linux_path_to_bin: '{{ firefox_linux_install_path }}/firefox/firefox'
+firefox_linux_path_to_icon: '{{ firefox_linux_install_path }}/firefox/browser/chrome/icons/default/default128.png'
 ```
 
 ## Dependencies

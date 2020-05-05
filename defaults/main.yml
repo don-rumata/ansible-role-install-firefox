@@ -71,7 +71,7 @@ firefox_windows_local_download_path: '{{ ansible_env.TMP }}\firefox'
 
 firefox_linux_local_download_path: '/var/cache/firefox'
 
-#--- Firefox install paths ---#
+#--- Firefox install paths. Only for tar.bz2 ---#
 
 firefox_linux_install_path: '/opt/firefox/{{ firefox_edition }}'
 
