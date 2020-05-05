@@ -1,0 +1,16 @@
+---
+- name: Create directory structure 4 install firefox
+  file:
+    path: '{{ firefox_linux_install_path }}'
+    state: directory
+
+- name: Unpack downloaded firefox archive
+  unarchive:
+    src: '{{ firefox_linux_local_download_path }}/{{ firefox_installer_file }}'
+    dest: '{{ firefox_linux_install_path }}'
+    remote_src: yes
+
+- name: Create .desktop file in system for all useres
+  template:
+    src: firefox.desktop.j2
+    dest: /usr/share/applications/firefox-{{ firefox_edition }}.desktop

@@ -12,7 +12,6 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
       versions:
         - 32
         - 31
-        - 30
     - name: Ubuntu
       versions:
         - focal
@@ -21,7 +20,6 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
         - cosmic
         - bionic
         - xenial
-        - trusty
     - name: Debian
       version:
         - jessie
@@ -52,49 +50,53 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 - :construction: - TODO. Work in progress.
 - :x: - not work. Don't try.
 
-|.              |Firefox stable    |Firefox beta      |Firefox nightly   |Firefox developer |Firefox esr       |.  |Flatpak           |Snap              |msi               |exe               |tar           |.  |32 bit            |64 bit            |
-|---------------|------------------|------------------|------------------|------------------|------------------|---|------------------|------------------|------------------|------------------|--------------|---|------------------|------------------|
-|OS             |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|Windows        |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|7              |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:           |   |:heavy_check_mark:|:heavy_check_mark:|
-|10             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:           |   |:heavy_check_mark:|:heavy_check_mark:|
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|Ubuntu         |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|focal          |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|eoan           |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|disco          |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|cosmic         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|bionic         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|xenial         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|trusty         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|Debian         |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|jessie         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|stretch        |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|buster         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|stable         |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|testing        |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|EL (CentOS)    |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|8              |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|7              |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|opensuse       |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|tumbleweed     |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:construction:|   |:heavy_check_mark:|:heavy_check_mark:|
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|ArchLinux      |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|any            |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |:heavy_check_mark:|:construction:    |:x:               |:x:               |:construction:|   |:x:               |:heavy_check_mark:|
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|Package manager|                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|Flatpak        |:heavy_check_mark:|:x:               |:x:               |:x:               |:x:               |   |                  |                  |                  |                  |              |   |                  |                  |
-|Snap           |:heavy_check_mark:|:heavy_check_mark:|:construction:    |:construction:    |:heavy_check_mark:|   |                  |                  |                  |                  |              |   |:x:               |:heavy_check_mark:|
-|msi            |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |                  |                  |                  |                  |              |   |                  |                  |
-|exe            |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |                  |                  |                  |                  |              |   |                  |                  |
-|tar            |:construction:    |:construction:    |:construction:    |:construction:    |:construction:    |   |                  |                  |                  |                  |              |   |                  |                  |
-|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|Architecture   |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |              |   |                  |                  |
-|32             |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |                  |                  |                  |                  |              |   |                  |                  |
-|64             |:heavy_check_mark:|:construction:    |:construction:    |:construction:    |:construction:    |   |                  |                  |                  |                  |              |   |                  |                  |
+|.              |Firefox stable    |Firefox beta      |Firefox nightly   |Firefox developer |Firefox esr       |.  |Flatpak           |Snap              |msi               |exe               |tar.bz2           |.  |32 bit            |64 bit            |
+|---------------|------------------|------------------|------------------|------------------|------------------|---|------------------|------------------|------------------|------------------|------------------|---|------------------|------------------|
+|OS             |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Windows        |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|7              |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:               |   |:heavy_check_mark:|:heavy_check_mark:|
+|10             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:x:               |:x:               |:heavy_check_mark:|:heavy_check_mark:|:x:               |   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Ubuntu         |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|focal          |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|eoan           |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|disco          |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|cosmic         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|bionic         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|xenial         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Debian         |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|jessie         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|stretch        |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|buster         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|stable         |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|testing        |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|EL (CentOS)    |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|8              |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|7              |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|opensuse       |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|tumbleweed     |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:|   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|ArchLinux      |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|any            |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |:heavy_check_mark:|:construction:    |:x:               |:x:               |:heavy_check_mark:|   |:x:               |:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Fedora         |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|32             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |:heavy_check_mark:|:heavy_check_mark:|
+|31             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |:heavy_check_mark:|:heavy_check_mark:|
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Package manager|                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|deb\rpm        |:heavy_check_mark:|:x:               |:x:               |:x:               |:x:               |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Flatpak        |:heavy_check_mark:|:x:               |:x:               |:x:               |:x:               |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Snap           |:heavy_check_mark:|:heavy_check_mark:|:construction:    |:construction:    |:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |:x:               |:heavy_check_mark:|
+|msi            |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |                  |                  |
+|exe            |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |                  |                  |
+|tar.bz2        |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |                  |                  |
+|.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|Architecture   |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
+|32             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |                  |                  |
+|64             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |                  |                  |
 
 ## Requirements
 
@@ -116,7 +118,7 @@ firefox_edition: stable
 firefox_method_install: package-manager
 # firefox_method_install: flatpak
 # firefox_method_install: snap
-# firefox_method_install: tar
+# firefox_method_install: tar.bz2
 
 #--- Firefox language ---#
 
@@ -242,6 +244,10 @@ Apache License, Version 2.0
 - Add ArchLinux firefox-i18n-{{ system_lang }}
 
 - Add custom languages.
+
+- Add get links over http-header
+
+- Add uninstall.yml
 
 ## Thanks
 

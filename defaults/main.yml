@@ -29,7 +29,7 @@ firefox_method_install: package-manager
 # firefox_method_install: snap
 
 # https://www.mozilla.org/en/firefox/download/thanks/
-# firefox_method_install: tar
+# firefox_method_install: tar.bz2
 
 #--- Firefox architecture ---#
 
@@ -65,11 +65,19 @@ firefox_win_installer_type: exe
 
 # firefox_win_installer_type: msi
 
-#--- Firefox local download path. ---#
+#--- Firefox local download path ---#
 
 firefox_windows_local_download_path: '{{ ansible_env.TMP }}\firefox'
 
-firefox_linux_local_download_path: '/tmp/firefox'
+firefox_linux_local_download_path: '/var/cache/firefox'
+
+#--- Firefox install paths ---#
+
+firefox_linux_install_path: '/opt/firefox/{{ firefox_edition }}'
+
+firefox_linux_path_to_bin: '{{ firefox_linux_install_path }}/firefox/firefox'
+
+firefox_linux_path_to_icon: '{{ firefox_linux_install_path }}/firefox/browser/chrome/icons/default/default128.png'
 
 #--- Firefox checksum algorithm ---#
 

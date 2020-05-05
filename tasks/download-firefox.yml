@@ -8,10 +8,27 @@
   become_flags: logon_type=new_credentials logon_flags=netcredentials_only
   block:
     - win_file:
-        path: "{{ firefox_windows_local_download_path }}"
+        path: '{{ firefox_windows_local_download_path }}'
         state: directory
     - win_get_url:
         url: '{{ firefox_direct_download_url }}'
         dest: '{{ firefox_windows_local_download_path }}\{{ firefox_installer_file }}'
+        # checksum: TODO
+        # checksum_algorithm: TODO
+
+
+
+- name: Download Firefox 4 Linux
+  when:
+    - ansible_system == 'Linux'
+    - firefox_method_install == 'tar.bz2'
+  become: yes
+  block:
+    - file:
+        path: '{{ firefox_linux_local_download_path }}'
+        state: directory
+    - get_url:
+        url: '{{ firefox_direct_download_url }}'
+        dest: '{{ firefox_linux_local_download_path }}/{{ firefox_installer_file }}'
         # checksum: TODO
         # checksum_algorithm: TODO
