@@ -1,6 +1,6 @@
 # Ansible Role: Install Firefox
 
-[![License][license-image]][license-url]
+[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url]
 
 Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 
@@ -273,3 +273,6 @@ Apache License, Version 2.0
 
 [license-image]: https://img.shields.io/github/license/don-rumata/ansible-role-install-firefox.svg
 [license-url]: https://opensource.org/licenses/Apache-2.0
+
+[ansible-galaxy-image]: https://img.shields.io/badge/galaxy-don__rumata.ansible__role__install__firefox-blue.svg
+[ansible-galaxy-url]: https://galaxy.ansible.com/don_rumata/ansible_role_install_firefox
