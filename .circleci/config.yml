@@ -180,15 +180,15 @@ workflows:
 
   workflow-run-tests:
     jobs:
-      - job-run-ansible-in-fedora-31
-      - job-run-ansible-in-fedora-32
-      - job-run-ansible-in-ubuntu-16-04
-      - job-run-ansible-in-ubuntu-18-04
+      # - job-run-ansible-in-fedora-31
+      # - job-run-ansible-in-fedora-32
+      # - job-run-ansible-in-ubuntu-16-04
+      # - job-run-ansible-in-ubuntu-18-04
       - job-run-ansible-in-ubuntu-20-04
-      - job-run-ansible-in-debian-oldstable
-      - job-run-ansible-in-debian-stable
-      # TODO
-      # - job-run-ansible-in-debian-testing
-      - job-run-ansible-in-centos-7
-      - job-run-ansible-in-centos-8
-      - job-run-ansible-in-opensuse-15-1
+      # - job-run-ansible-in-debian-oldstable
+      # - job-run-ansible-in-debian-stable
+      # # TODO
+      # # - job-run-ansible-in-debian-testing
+      # - job-run-ansible-in-centos-7
+      # - job-run-ansible-in-centos-8
+      # - job-run-ansible-in-opensuse-15-1

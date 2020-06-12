@@ -6,15 +6,11 @@
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
   become: yes
-  block:
-    - apt:
-        name:
-          - firefox
-          # Ставим пакет firefox-locale-ru методом парсинга стандартной переменной $LANG. На bash было бы как-то так: echo "$LANG" | cut -d '.' -f 1 | cut -d '_' -f 1 .
-          # https://ru.stackoverflow.com/a/903718
-          - 'firefox-locale-{{ ansible_env.LANG.split(".")[0].split("_")[0] }}'
-        state: latest
-        install_recommends: yes
+  apt:
+    name:
+      - firefox
+    state: present
+    install_recommends: yes
   tags:
     - linux
     - ubuntu
@@ -22,6 +18,21 @@
     - firefox
     - browser
     - ff
+
+# https://stackoverflow.com/q/25909379
+- name: Install Firefox language pack 4 Debian\Ubuntu
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+    - LANG in ansible_env
+  become: yes
+  apt:
+    name:
+      # Ставим пакет firefox-locale-ru методом парсинга стандартной переменной $LANG. На bash было бы как-то так: echo "$LANG" | cut -d '.' -f 1 | cut -d '_' -f 1 .
+      # https://ru.stackoverflow.com/a/903718
+      - 'firefox-locale-{{ ansible_env.LANG.split(".")[0].split("_")[0] }}'
+    state: present
+    install_recommends: yes
 
 - name: Install Firefox 4 CentOS\RHEL
   when:
@@ -36,7 +47,7 @@
     - yum:
         name:
           - firefox
-        state: latest
+        state: present
   tags:
     - linux
     - firefox
@@ -55,7 +66,7 @@
     - dnf:
         name:
           - firefox
-        state: latest
+        state: present
   tags:
     - linux
     - firefox
@@ -76,7 +87,7 @@
         name:
           - MozillaFirefox
           - MozillaFirefox-translations-other
-        state: latest
+        state: present
   tags:
     - linux
     - suse
@@ -97,7 +108,7 @@
           - firefox
           # TODO. notWORK. env почему-то не цепляется ну вот никак.
           # - firefox-i18n-{{ ansible_env.LANG.split(".")[0].split("_")[0] }}'
-        state: latest
+        state: present
   tags:
     - linux
     - firefox
