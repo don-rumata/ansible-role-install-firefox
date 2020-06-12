@@ -1,6 +1,6 @@
 # Ansible Role: Install Firefox
 
-[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url]
+[![License][license-image]][license-url] [![Ansible Galaxy][ansible-galaxy-image]][ansible-galaxy-url] [![CircleCI][circleci-image]][circleci-url]
 
 Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 
@@ -12,27 +12,22 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
   platforms:
     - name: Fedora
       versions:
-        - 32
         - 31
+        - 32
     - name: Ubuntu
       versions:
         - focal
-        - eoan
-        - disco
-        - cosmic
         - bionic
         - xenial
     - name: Debian
       version:
-        - jessie
-        - stretch
-        - buster
+        - oldstable
         - stable
-        - testing
+        # - testing
     - name: EL (CentOS)
       versions:
-        - 8
         - 7
+        - 8
     - name: opensuse
       vesrion:
         - tumbleweed
@@ -247,7 +242,9 @@ Apache License, Version 2.0
 
 ## TODO
 
-- Add tests.
+- ~~Add tests.~~
+
+- Add more tests.
 
 - Add ArchLinux firefox-i18n-{{ system_lang }}
 
@@ -276,3 +273,6 @@ Apache License, Version 2.0
 
 [ansible-galaxy-image]: https://img.shields.io/badge/ansible_galaxy-don__rumata.ansible__role__install__firefox-blue.svg
 [ansible-galaxy-url]: https://galaxy.ansible.com/don_rumata/ansible_role_install_firefox
+
+[circleci-image]: https://circleci.com/gh/don-rumata/ansible-role-install-firefox.svg?style=shield
+[circleci-url]: https://circleci.com/gh/don-rumata/ansible-role-install-firefox
