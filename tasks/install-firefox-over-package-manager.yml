@@ -1,25 +1,25 @@
 ---
 # https://repology.org/project/firefox/versions
 
-# - import_tasks: update-cache.yml
+- import_tasks: update-cache.yml
 
-# - name: Install Firefox 4 Debian\Ubuntu
-#   when:
-#     - ansible_os_family == 'Debian'
-#     - ansible_pkg_mgr == 'apt'
-#   become: yes
-#   apt:
-#     name:
-#       - firefox
-#     state: present
-#     install_recommends: yes
-#   tags:
-#     - linux
-#     - ubuntu
-#     - mozilla
-#     - firefox
-#     - browser
-#     - ff
+- name: Install Firefox 4 Debian\Ubuntu
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+  become: yes
+  apt:
+    name:
+      - firefox
+    state: present
+    install_recommends: yes
+  tags:
+    - linux
+    - ubuntu
+    - mozilla
+    - firefox
+    - browser
+    - ff
 
 # https://stackoverflow.com/q/25909379
 - name: Install Firefox language pack 4 Debian\Ubuntu
