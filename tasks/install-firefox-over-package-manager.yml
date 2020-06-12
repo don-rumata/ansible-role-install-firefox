@@ -8,7 +8,7 @@
   when:
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
-    - not (ansible_distribution_release in ['stretch', 'bullseye'])
+    - not (ansible_distribution_version in ['9', '10', '11'])
   become: yes
   apt:
     name:
@@ -28,7 +28,7 @@
   when:
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
-    - ansible_distribution_release in ['stretch', 'bullseye']
+    - ansible_distribution_version in ['9', '10', '11']
   become: yes
   apt:
     name:
@@ -49,7 +49,7 @@
   when:
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
-    - not (ansible_distribution_release in ['stretch', 'bullseye'])
+    - not (ansible_distribution_version in ['9', '10', '11'])
     - ansible_env in ['LANG']
   become: yes
   apt:
@@ -73,7 +73,7 @@
   when:
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
-    - ansible_distribution_release in ['stretch', 'bullseye']
+    - ansible_distribution_version in ['9', '10', '11']
     - ansible_env in ['LANG']
   become: yes
   apt:
