@@ -1,7 +1,10 @@
 ---
 # https://repology.org/project/firefox/versions
 
+- import_tasks: add-repo.yml
+
 - import_tasks: update-cache.yml
+  when: add_apt_repo.changed == true
 
 # https://wiki.debian.org/ru/Firefox
 - name: Install Firefox 4 Ubuntu, but not Debian
@@ -50,7 +53,8 @@
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
     - not (ansible_distribution_version in ['9', '10', '11'])
-    - ansible_env in ['LANG']
+    - ansible_env.LANG is defined
+    - not ( 'C.UTF-8' in ansible_env.LANG )
   become: yes
   apt:
     name:
@@ -74,7 +78,8 @@
     - ansible_os_family == 'Debian'
     - ansible_pkg_mgr == 'apt'
     - ansible_distribution_version in ['9', '10', '11']
-    - ansible_env in ['LANG']
+    - ansible_env.LANG is defined
+    - not ( 'C.UTF-8' in ansible_env.LANG )
   become: yes
   apt:
     name:
@@ -92,6 +97,34 @@
     - ff
     - lang
     - language
+
+- name: Install Firefox nightly 4 Debian/Ubuntu
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+    - firefox_edition == 'nightly'
+  become: yes
+  block:
+    - apt:
+        name:
+          - firefox-nightly
+        state: latest
+        install_recommends: yes
+    - apt:
+        name:
+          - 'firefox-nightly-l10n-{{ ansible_env.LANG.split(".")[0].split("_")[0] }}'
+      when:
+        - ansible_env.LANG is defined
+        - not ( 'C.UTF-8' in ansible_env.LANG )
+  tags:
+    - linux
+    - debian
+    - ubuntu
+    - mozilla
+    - firefox
+    - browser
+    - ff
+    - nightly
 
 - name: Install Firefox 4 CentOS\RHEL
   when:

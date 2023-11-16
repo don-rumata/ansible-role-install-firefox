@@ -84,7 +84,7 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 |31             |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |:heavy_check_mark:|:heavy_check_mark:|
 |.              |                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
 |Package manager|                  |                  |                  |                  |                  |   |                  |                  |                  |                  |                  |   |                  |                  |
-|deb\rpm        |:heavy_check_mark:|:x:               |:x:               |:x:               |:x:               |   |                  |                  |                  |                  |                  |   |                  |                  |
+|deb/rpm        |:heavy_check_mark:|:x:               |:x:               |:heavy_check_mark:/:x:               |:x:               |   |                  |                  |                  |                  |                  |   |                  |                  |
 |Flatpak        |:heavy_check_mark:|:x:               |:x:               |:x:               |:x:               |   |                  |                  |                  |                  |                  |   |                  |                  |
 |Snap           |:heavy_check_mark:|:heavy_check_mark:|:construction:    |:construction:    |:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |:x:               |:heavy_check_mark:|
 |msi            |:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|   |                  |                  |                  |                  |                  |   |                  |                  |
@@ -102,45 +102,118 @@ Install [Firefox](https://www.firefox.com/) for Linux and Windows.
 ## Role Variables
 
 ```yaml
+---
 #--- Firefox Edition ---#
 
 firefox_edition: stable
+
+# https://www.mozilla.org/en-US/firefox/channel/desktop/#beta
 # firefox_edition: beta
+
+# https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly
 # firefox_edition: nightly
+
+# https://www.mozilla.org/en/firefox/developer/
 # firefox_edition: developer
+
+# https://www.mozilla.org/en/firefox/enterprise/
 # firefox_edition: esr
 
 #--- Firefox method install ---#
 
+# https://repology.org/project/firefox/versions
 firefox_method_install: package-manager
+
+# https://en.wikipedia.org/wiki/Flatpak
+# https://flathub.org/apps/details/org.mozilla.firefox
 # firefox_method_install: flatpak
+
+# https://en.wikipedia.org/wiki/Snappy_(package_manager)
+# https://snapcraft.io/firefox
 # firefox_method_install: snap
+
+# https://www.mozilla.org/en/firefox/download/thanks/
 # firefox_method_install: tar.bz2
+
+#--- Firefox architecture ---#
+
+firefox_arch: 64
+
+# https://en.wikipedia.org/wiki/64-bit_computing
+# firefox_arch: 32
 
 #--- Firefox language ---#
 
 # Default value: firefox_lang == your_windows_system_language
 
+# firefox_lang: ru
+# firefox_lang: en-US
+
 #--- Firefox api urls ---#
 
-firefox_versions_url: 'https://product-details.mozilla.org/1.0/firefox_versions.json'
-firefox_available_languages_url: 'https://product-details.mozilla.org/1.0/languages.json'
+firefox_versions_url: https://product-details.mozilla.org/1.0/firefox_versions.json
+
+# Need for Windows.
+firefox_available_languages_url: https://product-details.mozilla.org/1.0/languages.json
 
 #--- Firefox installer type. Windows only!!! ---#
 
 firefox_win_installer_type: exe
+
 # firefox_win_installer_type: msi
 
-#--- Firefox local download path. ---#
+#--- Firefox local download path ---#
 
 firefox_windows_local_download_path: '{{ ansible_env.TMP }}\firefox'
+
 firefox_linux_local_download_path: '/var/cache/firefox'
 
 #--- Firefox install paths. Only for tar.bz2 ---#
 
 firefox_linux_install_path: '/opt/firefox/{{ firefox_edition }}'
+
 firefox_linux_path_to_bin: '{{ firefox_linux_install_path }}/firefox/firefox'
+
 firefox_linux_path_to_icon: '{{ firefox_linux_install_path }}/firefox/browser/chrome/icons/default/default128.png'
+
+#--- Firefox checksum algorithm ---#
+
+firefox_checksum_algorithm: sha256
+
+# firefox_checksum_algorithm: sha512
+
+#--- Firefox version ---#
+
+firefox_version: latest
+
+# firefox_version: 75.0
+
+#--- Apt repo section ---#
+
+# https://repolib.readthedocs.io/en/latest/deb822-format.html
+
+# If you *NOT* use apt-cacher-ng or other caching proxy - select "https".
+http_or_https: http
+# http_or_https: https
+
+# https://www.opennet.ru/opennews/art.shtml?num=60019
+
+mozilla_apt_repo_path_to_sources: /etc/apt/sources.list.d/mozilla.sources
+
+mozilla_gpg_repo_key_url: https://packages.mozilla.org/apt/repo-signing-key.gpg
+
+mozilla_apt_repo_architectures:
+  - amd64
+mozilla_apt_repo_components:
+  - main
+mozilla_apt_repo_suites:
+  - mozilla
+mozilla_apt_repo_types:
+  - deb
+mozilla_apt_repo_uris:
+  - "{{ http_or_https }}://packages.mozilla.org/apt"
+mozilla_apt_repo_x_repolib_name: Official Mozilla repo
+
 ```
 
 ## Dependencies

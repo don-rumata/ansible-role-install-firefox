@@ -1,4 +1,7 @@
 ---
+- include_vars:
+    dir: vars/main
+
 - name: Get Firefox versions
   import_tasks: get-firefox-version-and-set-facts.yml
   tags:

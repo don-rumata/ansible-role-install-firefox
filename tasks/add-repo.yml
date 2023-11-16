@@ -1,0 +1,16 @@
+---
+- name: Add Mozilla repo key 4 Debian/Ubuntu
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+    - firefox_edition == 'nightly'
+  become: yes
+  block:
+    - apt_key:
+        url: "{{ mozilla_gpg_repo_key_url }}"
+        state: present
+    - copy:
+        dest: "{{ mozilla_apt_repo_path_to_sources }}"
+        content: "{{ apt_repo_deb822 | to_nice_yaml }}"
+        mode: '0644'
+      register: add_apt_repo

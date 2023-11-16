@@ -1,0 +1,218 @@
+#############################################################################################################
+
+#--- DRAFT (for debug) ---#
+# https://www.mozilla.org/en-US/firefox/all/
+
+# https://download-installer.cdn.mozilla.net/pub/firefox/releases/75.0/win64/en-US/Firefox%20Setup%2075.0.exe
+
+# Browser: Firefox
+# Platform: Windows 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US
+
+# Browser: Firefox Beta
+# Platform: Windows 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=win64&lang=en-US
+# curl --head 'https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=win64&
+# lang=en-US'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 134
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:00:59 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/releases/76.0b8/win64/en-US/Firefox%20Setup%2076.0b8.exe
+# Connection: keep-alive
+
+# Browser: Firefox Developer Edition
+# Platform: Windows 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win64&lang=en-US
+# curl --head 'https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win64&lang=en-US'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 137
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:02:26 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/devedition/releases/76.0b8/win64/en-US/Firefox%20Setup%2076.0b8.exe
+# Connection: keep-alive
+
+# Browser: Firefox Nightly
+# Platform: Windows 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=win64&lang=en-US
+# curl --head 'https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=win64&lang=en-US'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 149
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:03:03 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-77.0a1.en-US.win64.installer.exe
+# Connection: keep-alive
+
+# Browser: Firefox Extended Support Release
+# Platform: Windows 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=win64&lang=en-US
+# curl --head 'https://download.mozilla.org/?product=fireownload.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 131
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:05:24 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/releases/75.0/linux-x86_64/en-US/firefox-75.0.tar.bz2
+# Connection: keep-alive
+# Content-Length: 140
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:03:32 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/releases/68.7.0esr/win64/en-US/Firefox%20Setup%2068.7.0esr.exe
+# Connection: keep-alive
+
+# Browser: Firefox
+# Platform: Windows 64-bit MSI
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=win64&lang=en-US
+
+# Browser: Firefox Beta
+# Platform: Windows 64-bit MSI
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-beta-msi-latest-ssl&os=win64&lang=en-US
+
+# Browser: Firefox Developer Edition
+# Platform: Windows 64-bit MSI
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-devedition-msi-latest-ssl&os=win64&lang=en-US
+
+# Browser: Firefox Nightly
+# Platform: Windows 64-bit MSI
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-nightly-msi-latest-ssl&os=win64&lang=en-US
+
+# Browser: Firefox Extended Support Release
+# Platform: Windows 64-bit MSI
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=win64&lang=en-US
+
+# Browser: Firefox
+# Platform: Windows 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-latest-ssl&os=win&lang=en-US
+# curl --head 'https://download.mozilla.org/?product=firefox-latest-ssl&os=win&lang=en-US'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 130
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:04:13 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/releases/75.0/win32/en-US/Firefox%20Setup%2075.0.exe
+# Connection: keep-alive
+
+# Browser: Firefox Beta
+# Platform: Windows 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=win&lang=en-US
+
+# Browser: Firefox Developer Edition
+# Platform: Windows 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win&lang=en-US
+
+# Browser: Firefox Nightly
+# Platform: Windows 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=win&lang=en-US
+
+# Browser: Firefox Extended Support Release
+# Platform: Windows 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=win&lang=en-US
+
+# Browser: Firefox
+# Platform: Linux 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US
+# curl --head 'https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 131
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:05:24 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/releases/75.0/linux-x86_64/en-US/firefox-75.0.tar.bz2
+# Connection: keep-alive
+
+# Browser: Firefox Beta
+# Platform: Linux 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=linux64&lang=en-US
+
+# Browser: Firefox Developer Edition
+# Platform: Linux 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US
+
+# Browser: Firefox Nightly
+# Platform: Linux 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux64&lang=en-US
+
+# Browser: Firefox Extended Support Release
+# Platform: Linux 64-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=linux64&lang=en-US
+
+# Browser: Firefox
+# Platform: Linux 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-latest-ssl&os=linux&lang=en-US
+
+# Browser: Firefox Beta
+# Platform: Linux 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=linux&lang=en-US
+
+# Browser: Firefox Developer Edition
+# Platform: Linux 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux&lang=en-US
+
+# Browser: Firefox Nightly
+# Platform: Linux 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux&lang=en-US
+
+# Browser: Firefox Extended Support Release
+# Platform: Linux 32-bit
+# Language: English (US)
+# https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=linux&lang=en-US
+
+# Browser: Firefox
+# Platform: Windows 64-bit
+# Language: Russian — Русский
+# https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=ru
+
+# Browser: Firefox Beta
+# Platform: Windows 64-bit
+# Language: Russian — Русский
+# https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=win64&lang=ru
+
+# Browser: Firefox Developer Edition
+# Platform: Windows 64-bit
+# Language: Russian — Русский
+# https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win64&lang=ru
+
+# Browser: Firefox Nightly
+# Platform: Windows 64-bit
+# Language: Russian — Русский
+# https://download.mozilla.org/?product=firefox-nightly-latest-l10n-ssl&os=win64&lang=ru
+
+# Browser: Firefox Extended Support Release
+# Platform: Windows 64-bit
+# Language: Russian — Русский
+# https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=win64&lang=ru
+# curl --head 'https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=win64&lang=ru'
+# HTTP/1.1 302 Found
+# Cache-Control: max-age=60
+# Content-Length: 137
+# Content-Type: text/html; charset=utf-8
+# Date: Mon, 04 May 2020 14:06:34 GMT
+# Location: https://download-installer.cdn.mozilla.net/pub/firefox/releases/68.7.0esr/win64/ru/Firefox%20Setup%2068.7.0esr.exe
+# Connection: keep-alive

@@ -1,0 +1,7 @@
+---
+apt_repo_architectures: "{{ mozilla_apt_repo_architectures }}"
+apt_repo_components: "{{ mozilla_apt_repo_components }}"
+apt_repo_types: "{{ mozilla_apt_repo_types }}"
+apt_repo_uris: "{{ mozilla_apt_repo_uris }}"
+apt_repo_x_repolib_name: "{{ mozilla_apt_repo_x_repolib_name }}"
+apt_repo_path_to_sources: "{{ mozilla_apt_repo_path_to_sources }}"
