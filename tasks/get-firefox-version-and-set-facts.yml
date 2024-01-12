@@ -1,10 +1,10 @@
 ---
 - name: Get Firefox available versions from Mozilla
-  local_action:
-    module: uri
-    url: '{{ firefox_versions_url }}'
+  uri:
+    url: "{{ firefox_versions_url }}"
     return_content: yes
   register: firefox_available_versions
+  delegate_to: localhost
 
 
 
@@ -27,19 +27,24 @@
 - name: Set facts about available Firefox versions
   block:
     - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_VERSION }}"
+        firefox_available_version_fact:
+          "{{ firefox_available_versions.json.LATEST_FIREFOX_VERSION }}"
       when: firefox_edition == 'stable'
     - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.LATEST_FIREFOX_RELEASED_DEVEL_VERSION }}"
+        firefox_available_version_fact:
+          "{{ firefox_available_versions.json.LATEST_FIREFOX_RELEASED_DEVEL_VERSION }}"
       when: firefox_edition == 'beta'
     - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_NIGHTLY }}"
+        firefox_available_version_fact:
+          "{{ firefox_available_versions.json.FIREFOX_NIGHTLY }}"
       when: firefox_edition == 'nightly'
     - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_DEVEDITION }}"
+        firefox_available_version_fact:
+          "{{ firefox_available_versions.json.FIREFOX_DEVEDITION }}"
       when: firefox_edition == 'developer'
     - set_fact:
-        firefox_available_version_fact: "{{ firefox_available_versions.json.FIREFOX_ESR }}"
+        firefox_available_version_fact:
+          "{{ firefox_available_versions.json.FIREFOX_ESR }}"
       when: firefox_edition == 'esr'
 
 
@@ -48,22 +53,28 @@
   when: ansible_os_family == 'Windows'
   block:
     - set_fact:
-        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
+        firefox_win_install_path_fact:
+          '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
       when: firefox_edition == 'stable'
     - set_fact:
-        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
+        firefox_win_install_path_fact:
+          '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
       when: firefox_edition == 'beta'
     - set_fact:
-        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Firefox Nightly'
+        firefox_win_install_path_fact:
+          '{{ ansible_env.ProgramFiles }}\Firefox Nightly'
       when: firefox_edition == 'nightly'
     - set_fact:
-        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Firefox Developer Edition'
+        firefox_win_install_path_fact:
+          '{{ ansible_env.ProgramFiles }}\Firefox Developer Edition'
       when: firefox_edition == 'developer'
     - set_fact:
-        firefox_win_install_path_fact: '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
+        firefox_win_install_path_fact:
+          '{{ ansible_env.ProgramFiles }}\Mozilla Firefox'
       when: firefox_edition == 'esr'
     - set_fact:
-        firefox_win_path_to_exe_fact: '{{ firefox_win_install_path_fact }}\firefox.exe'
+        firefox_win_path_to_exe_fact:
+          '{{ firefox_win_install_path_fact }}\firefox.exe'
 
 
 
@@ -73,7 +84,8 @@
     - firefox_method_install == 'tar.bz2'
   block:
     - set_fact:
-        firefox_linux_install_path_fact: '{{ firefox_linux_install_path }}'
+        firefox_linux_install_path_fact:
+          '{{ firefox_linux_install_path }}'
 
 
 
@@ -150,9 +162,11 @@
   when: ansible_os_family == 'Windows'
   block:
     # - set_fact:
-    #     firefox_lang_fact_tmp: "{{ firefox_lang_for_windows_from_json.msg }}"
+    #     firefox_lang_fact_tmp:
+    #       "{{ firefox_lang_for_windows_from_json.msg }}"
     - set_fact:
-        firefox_lang_fact: "{{ firefox_lang_for_windows_from_json.msg }}"
+        firefox_lang_fact:
+          "{{ firefox_lang_for_windows_from_json.msg }}"
     #   when:
     #     - firefox_lang == firefox_lang_fact_tmp
     # - set_fact:
@@ -196,18 +210,24 @@
     - ansible_os_family == 'Windows'
   block:
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}
-        firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_checksum_algorithm | upper }}SUMS
+        firefox_direct_download_url:
+          https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}
+        firefox_checksums_array_url_fact:
+          https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/{{ firefox_checksum_algorithm | upper }}SUMS
       when: firefox_edition == 'stable' or firefox_edition == 'beta' or firefox_edition == 'esr'
 
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.{{ firefox_arch_fact }}.installer.{{ firefox_win_installer_type }}
-        firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.{{ firefox_arch_fact }}.checksums
+        firefox_direct_download_url:
+          https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.{{ firefox_arch_fact }}.installer.{{ firefox_win_installer_type }}
+        firefox_checksums_array_url_fact:
+          https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.{{ firefox_arch_fact }}.checksums
       when: firefox_edition == 'nightly'
 
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/devedition/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}
-        firefox_checksums_array_url_fact: https://download-installer.cdn.mozilla.net/pub/devedition/releases/{{ firefox_available_version_fact }}/{{ firefox_checksum_algorithm | upper }}SUMS
+        firefox_direct_download_url:
+          https://download-installer.cdn.mozilla.net/pub/devedition/releases/{{ firefox_available_version_fact }}/{{ firefox_arch_fact }}/{{ firefox_lang_fact }}/Firefox%20Setup%20{{ firefox_available_version_fact }}.{{ firefox_win_installer_type }}
+        firefox_checksums_array_url_fact:
+          https://download-installer.cdn.mozilla.net/pub/devedition/releases/{{ firefox_available_version_fact }}/{{ firefox_checksum_algorithm | upper }}SUMS
       when: firefox_edition == 'developer'
 
 
@@ -218,17 +238,20 @@
     - firefox_method_install == 'tar.bz2'
   block:
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/linux-{{ ansible_architecture }}/{{ firefox_lang_fact }}/firefox-{{ firefox_available_version_fact }}.{{ firefox_method_install }}
+        firefox_direct_download_url:
+          https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ firefox_available_version_fact }}/linux-{{ ansible_architecture }}/{{ firefox_lang_fact }}/firefox-{{ firefox_available_version_fact }}.{{ firefox_method_install }}
         # firefox_checksums_array_url_fact: TODO
       when: firefox_edition == 'stable' or firefox_edition == 'beta' or firefox_edition == 'esr'
 
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.linux-{{ ansible_architecture }}.{{ firefox_method_install }}
+        firefox_direct_download_url:
+          https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-{{ firefox_available_version_fact }}.en-US.linux-{{ ansible_architecture }}.{{ firefox_method_install }}
         # firefox_checksums_array_url_fact: TODO
       when: firefox_edition == 'nightly'
 
     - set_fact:
-        firefox_direct_download_url: https://download-installer.cdn.mozilla.net/pub/devedition/releases/{{ firefox_available_version_fact }}/linux-{{ ansible_architecture }}/{{ firefox_lang_fact }}/firefox-{{ firefox_available_version_fact }}.{{ firefox_method_install }}
+        firefox_direct_download_url:
+          https://download-installer.cdn.mozilla.net/pub/devedition/releases/{{ firefox_available_version_fact }}/linux-{{ ansible_architecture }}/{{ firefox_lang_fact }}/firefox-{{ firefox_available_version_fact }}.{{ firefox_method_install }}
         # firefox_checksums_array_url_fact: TODO
       when: firefox_edition == 'developer'
 
@@ -237,11 +260,13 @@
   block:
     - set_fact:
         # firefox_installer_file: firefox-installer-{{ firefox_edition }}-{{ firefox_available_version_fact }}-{{ firefox_arch_fact }}-{{ firefox_lang_fact }}.{{ firefox_win_installer_type }}
-        firefox_installer_file: "{{ firefox_direct_download_url | urlsplit('path') | basename }}"
+        firefox_installer_file:
+          "{{ firefox_direct_download_url | urlsplit('path') | basename }}"
       when:
         - ansible_os_family == 'Windows'
     - set_fact:
-        firefox_installer_file: "{{ firefox_direct_download_url | urlsplit('path') | basename }}"
+        firefox_installer_file:
+          "{{ firefox_direct_download_url | urlsplit('path') | basename }}"
       when:
         - ansible_system == 'Linux'
         - firefox_method_install == 'tar.bz2'
